@@ -1,0 +1,9 @@
+# O por que disso pode ser explicado aqui https://chatgpt.com/c/389f316c-c8b6-4d1e-a7f1-52666a94a178
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /HoverApp/public/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>

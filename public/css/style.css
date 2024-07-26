@@ -1,0 +1,839 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: "Rubik", Arial, sans-serif;
+    overflow-x: hidden; /* Impede o scroll horizontal */
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.banner {
+    height: 100%;
+    background-color: #038C5A ;
+}
+
+.password-container {
+    position: relative;
+}
+#EntrarSenha{
+    width: 100%;
+    padding-right: 50px; /* Espaço para o botão */
+}
+
+.toggle-password {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    color: #E0E0E0;
+}
+
+.toggle-password:hover {
+    color: #038C5A;
+}
+
+.toggle-password i {
+    font-size: 18px;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.col, .row {
+    margin: 0; /* Remove margens extras se necessário */
+}
+
+.black-gray-container{
+    background-color: #1E1E1E;
+    color: #fff;
+    border: #000000 !important;
+}
+
+.title {
+    color: #ffffff ;
+    font-size: 27px;
+    line-height: 32px;
+}
+
+.subtitle {
+    color: #B0B0B0 ;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 16px auto;
+}
+
+.form-control {
+    background-color: #fff;
+    border: 1px solid #e6ecf0;
+    border-radius: 3px;
+}
+
+.btn-green {
+background-color: #038C5A;
+color: #fff;
+border: none;
+border-radius: 3px;        
+cursor: pointer;    
+}
+
+.btn-search {
+    background-color: #038C5A;
+    color: #fff;
+    border: none;
+    border-top-right-radius: 25px !important;        
+    border-bottom-right-radius: 25px !important;        
+    cursor: pointer;    
+}
+
+.btn-search:hover{
+    background-color: #027B4B;
+}
+
+.btn-green:hover {
+background-color: #027B4B;
+color: #fff !important;
+}
+
+.comunicacao {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.communicationItem {
+    color: #fff;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 24px;
+    margin: 48px auto;
+    position: relative;
+}
+
+.quemSeguir {
+    border: 1px solid #000000;
+    background: #1E1E1E;
+    position: relative;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.quemSeguirTitulo {
+    font-weight: bold;
+    font-size: 16px; /* Menor tamanho de fonte */
+    line-height: 22px;
+    color: #FFF;
+}
+
+.quemSeguirLista{
+    margin-top: 20px;
+    
+}
+
+.quemSeguirTxt, .quemSeguirTxt:hover {
+    color: #038C5A;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.quem-seguir-item {
+    margin-bottom: 10px; /* Espaço entre os itens */
+}
+
+#whoissearch{
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+.btn-follow {
+    background: transparent;
+    border: none;
+    color: #038C5A;
+    font-size: 18px; /* Tamanho do ícone */
+    cursor: pointer;
+}
+
+.btn-follow:hover {
+    color: #027B4B; /* Alterar a cor do ícone ao passar o mouse */
+}
+
+
+.menu {
+    background: #1E1E1E;
+    height: 60px;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+}
+
+.menu .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+.menuItem {
+    font-size: 15px;
+    font-weight: bold;
+    color: #E0E0E0;
+    text-decoration: none;
+    margin-right: 25px;
+    transition: color 0.3s ease;
+}
+
+.menuItem:hover {
+    color: #038C5A;
+}
+
+.menuIco {
+    width: 31px;
+    height: 23px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-top:-10px;
+    margin-left:-15px;
+}
+
+/* Estilo do menu hamburguer */
+/* Estilo do menu hamburguer */
+.navbar-toggler {
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    width: 30px;
+    height: 21px;
+    position: relative;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon div {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #E0E0E0;
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+    top: 0;
+}
+
+.navbar-toggler-icon div {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.navbar-toggler-icon::after {
+    bottom: 0;
+}
+
+/* Menu colapsado */
+.navbar-collapse {
+    background-color: #1E1E1E;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
+.navbar-nav .menuItem {
+    padding: 10px 15px;
+    color: #E0E0E0;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-nav .menuItem:hover {
+    background-color: #038C5A;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.navbar-nav .menuItem:focus {
+    background-color: #027B4B;
+    color: #fff;
+    border-radius: 4px;
+}
+
+
+.perfil {
+    border: 1px solid #000000;
+    background: #1E1E1E;
+    position: relative;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    border-radius: 15px;
+    color: #FFF;
+    padding-bottom: 10px;
+}
+
+.perfilTopo {
+    height: 150px; /* Aumenta a altura do topo do perfil */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    width: 100%;
+    background-color: #1E1E1E;
+    background-size: cover; /* Faz com que a imagem cubra todo o topo */
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.perfilTopoPag {
+    height: 150px; /* Aumenta a altura do topo do perfil */
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    overflow: hidden;
+}
+
+.perfilPainel {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.perfilPainelNome {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    margin-right: 7px;
+}
+
+.perfilPainelItem  {
+    color: #E0E0E0;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: .02em;
+    line-height: 16px;
+    overflow: hidden;
+    transition: color .15s ease-in-out;
+}
+
+.perfilPainelItemValor {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 3px;
+    transition: color .15s;
+    color: #038C5A !important;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.textInputWrapper {
+    position: relative;
+    width: 100%; /* Ajusta para a largura total do container */
+    margin: 12px 0; /* Ajusta para remover margens laterais */
+    --accent-color: #a3e583;
+}
+
+.textInputWrapper:before,
+.textInputWrapper:after {
+    content: "";
+    left: 0;
+    right: 0;
+    position: absolute;
+    pointer-events: none;
+    bottom: -1px;
+    z-index: 4;
+    width: 100%;
+}
+
+.textInputWrapper:before {
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+}
+
+.textInputWrapper:focus-within:before {
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.textInputWrapper:after {
+    transform: scaleX(0);
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    will-change: transform;
+    border-bottom: 2px solid var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+.textInputWrapper:focus-within:after {
+    transform: scaleX(1);
+}
+
+.textInput::placeholder {
+    transition: opacity 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    opacity: 1;
+    user-select: none;
+    color: rgba(255, 255, 255, 0.582);
+}
+
+.textInputWrapper .textInput {
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0px 2px 5px rgb(35 35 35 / 30%);
+    background-color: #252525;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 200ms;
+    transition-property: background-color;
+    color: #e8e8e8;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px;
+    width: 100%;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+    resize: none; /* Remove o redimensionamento horizontal */
+}
+
+/* Estilo da barra de rolagem */
+.textInput::-webkit-scrollbar {
+    width: 8px;
+    background-color: #1E1E1E; /* Cor de fundo da barra de rolagem */
+}
+
+.textInput::-webkit-scrollbar-thumb {
+    background-color: #038C5A; /* Cor do polegar da barra de rolagem */
+    border-radius: 10px; /* Arredondamento das bordas do polegar */
+}
+
+.textInput::-webkit-scrollbar-thumb:hover {
+    background-color: #027B4B; /* Cor do polegar ao passar o mouse */
+}
+  
+  .upload-button {
+    position: absolute;
+    bottom: 5px; /* Ajuste conforme necessário */
+    right: 15px; /* Ajuste conforme necessário */
+    cursor: pointer;
+    color: #a3e583; /* Cor do ícone */
+    font-size: 20px; /* Tamanho do ícone */
+  }
+  
+  .upload-button:hover {
+    color: #87c576; /* Cor do ícone ao passar o mouse */
+  }
+
+#charCount {
+   font-size: 0.9em;
+   color: #666;
+   margin-top: 5px;
+}
+/* Barra de Pesquisa */
+.input-group {
+    position: relative;
+    margin-bottom: 20px; /* Espaçamento abaixo da barra de pesquisa */
+}
+
+.input-group input {
+    border-top-left-radius: 25px !important; /* Arredondamento para um visual mais moderno */
+    border-bottom-left-radius: 25px !important; /* Arredondamento para um visual mais moderno */
+    border: 1px solid #038C5A; /* Cor da borda combinando com o tema */
+    background-color: #252525; /* Cor de fundo da barra de pesquisa */
+    color: #e8e8e8; /* Cor do texto */
+    padding: 10px 15px; /* Espaçamento interno */
+    font-size: 14px; /* Tamanho da fonte */
+    font-weight: 500;
+    width: calc(100% - 40px); /* Largura ajustada para acomodar o botão de pesquisa */
+    transition: background-color 0.3s ease; /* Transição suave ao interagir */
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+}
+
+.input-group input:focus {
+    outline: none;
+    background-color: #353535; /* Cor de fundo ao focar */
+    border-color: #038C5A; /* Cor da borda ao focar */
+}
+
+.input-group .btn {
+    border-radius: 25px; /* Arredondamento para combinar com o input */
+    background-color: #038C5A; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    padding: 10px 15px; /* Espaçamento interno */
+    cursor: pointer; /* Cursor indicando clique */
+    position: absolute; /* Posicionamento absoluto para alinhar ao lado do input */
+    right: 0; /* Alinha o botão à direita */
+    top: 0;
+    height: 100%; /* Faz o botão ter a mesma altura que o input */
+    border-top-right-radius: 25px; /* Arredondamento do canto superior direito */
+    border-bottom-right-radius: 25px; /* Arredondamento do canto inferior direito */
+    transition: background-color 0.3s ease; /* Transição suave ao interagir */
+    box-sizing: border-box; /* Inclui padding e border na altura total */
+}
+
+.input-group .btn:hover {
+    background-color: #027B4B; /* Cor de fundo ao passar o mouse */
+}
+
+
+.btn-transparent {
+    position: absolute;
+    top: 20px; /* Ajuste conforme necessário */
+    right: 20px; /* Ajuste conforme necessário */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparente */
+    color: #fff;
+    border: none;
+    border-radius: 100%;
+    padding: 10px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-transparent:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Mais escuro ao passar o mouse */
+}
+
+.btn-change-name {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparente */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 20px; /* Espaçamento do botão em relação ao nome */
+}
+
+.btn-change-name:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Mais escuro ao passar o mouse */
+}
+
+.btn-perfil-acess{
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparente */
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* Faz o botão ser redondo */
+    padding: 10px;
+    width: 30px; /* Largura do botão */
+    height: 30px; /* Altura do botão */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-perfil-acess:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Mais escuro ao passar o mouse */
+}
+
+.btn-perfil-acess i {
+    font-size: 14px; /* Tamanho do ícone */
+}
+
+.btn-perfil-acess:hover i {
+    color: #027B4B !important; /* Mais escuro ao passar o mouse */
+}
+
+.btn-perfil-acess i:hover {
+    color: #027B4B !important; /* Alterar a cor do ícone ao passar o mouse */    
+}
+
+.form-inline {
+    display: flex;
+    align-items: center;
+}
+
+.form-control-file {
+    display: inline-block;
+    width: auto;
+}
+
+.btn-change-top-image {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0.7;
+    margin-right: 10px;
+
+}
+
+
+.HoverBox {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border: 1px solid #000000;
+    background-color: #1E1E1E;
+    padding: 25px;
+}
+
+.searchBox{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: 1px solid #000000;
+    background-color: #1E1E1E;
+    padding: 15px;
+}
+
+.HoverItButton {
+    --primary-color: #038C5A;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 10px;
+    color: var(--secondary-color);
+    padding: 5px 10px;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+  }
+  
+  .HoverItButton .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .HoverItButton .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+  }
+  
+  .HoverItButton .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+  
+  .HoverItButton:hover {
+    background-color: var(--hover-color);
+  }
+  
+  .HoverItButton:hover .arrow {
+    background: var(--secondary-color);
+  }
+  
+  .HoverItButton:hover .arrow:before {
+    right: 0;
+  }
+
+.itemSeguirBox{
+    border: 1px solid #000000;
+    background-color: #1E1E1E;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.quemSeguir {
+    border: 1px solid #000000;
+    background: #1E1E1E;
+    position: relative;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    padding: 10px 10px 10px 20px;
+    border-radius: 15px;
+}
+
+.quemSeguirTitulo {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFF;
+}
+
+.quemSeguirTxt, .quemSeguirTxt:hover {
+    color: #038C5A;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.tweet {
+    padding: 15px;
+    border-bottom: 1px solid #e6ecf0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 15px;
+    background-color: #1E1E1E; /* Adicionar cor de fundo */
+}
+
+.tweet:hover {
+    background-color: #0f0f0f;
+}
+
+.destaque{
+    color: #038C5A;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+.pagination {
+    justify-content: center; 
+    background-color: #1E1E1E;
+    border-radius: 5px;
+    padding: 5px; 
+}
+
+.pagination .page-item {
+    margin: 0 3px;
+}
+
+.pagination .page-link {
+    color: #038C5A; 
+    background-color: #1E1E1E; 
+    border: 1px solid #038C5A; 
+    border-radius: 5px; 
+    padding: 8px 15px; 
+    font-size: 14px;
+}
+
+.pagination .page-link:hover {
+    background-color: #038C5A;
+    color: #fff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #038C5A; 
+    color: #fff;
+    border-color: #038C5A;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: #1E1E1E;
+    border-color: #1E1E1E; 
+}
+
+.modal-content {
+    border-radius: 8px;
+    background-color: #1c1c1c; 
+    color: #fff;
+}
+
+.modal-header {
+    border-bottom: 1px solid #333;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.close {
+    color: #fff;
+}
+
+.modal-footer {
+    border-top: 1px solid #333;
+}
+
+.btn-primary {
+    background-color: #038C5A;
+    border-color: #038C5A;
+}
+
+.btn-secondary {
+    background-color: #333;
+    border-color: #333;
+}
+
+.top-text-green{
+    color: #038C5A;
+    background-color: white;
+    padding: 4px;
+    padding-left: 7px;
+    text-align: center;
+    font-size: larger;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-weight: 900;    
+    font-family: "Bebas Neue", Arial, sans-serif;
+    letter-spacing: 3px;
+
+}
+
+.top-text-white{
+    color: white;
+    background-color: #038C5A;
+    padding: 4px;
+    padding-left: 7px;
+    font-size: larger;
+    text-align: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-weight: 900;    
+    font-family: "Bebas Neue", Arial, sans-serif;
+    letter-spacing: 3px;
+
+}

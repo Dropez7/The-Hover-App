@@ -1,0 +1,223 @@
+<nav class="navbar navbar-expand-sm menu">
+    <div class="container">
+        <a class="navbar-brand" href="timeline">
+            <img src="img/HoverIt4.png" alt="Logo" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-target" aria-controls="nav-target" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <div></div>
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav-target">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link menuItem" href="timeline"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menuItem" href="sair"><i class="fa fa-sign-out-alt"></i> Sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 pt-5">
+
+    <!-- Perfil -->
+		<div class="row">
+
+            <!-- Perfil Content -->
+            <div class="perfil black-gray-col">
+            
+            <!-- Topo do perfil -->
+            <div>
+                <?php if ($this->view->imagemTopo) { ?>
+                    <div class="perfilTopoPag" style="background-image: url(<?php echo $this->view->imagemTopo; ?>)">
+                <?php } else { ?>
+                    <div class="perfilTopoPag" style="background-color: #FFF">
+                <?php } ?>
+                
+                <label for="imagem" class="btn btn-transparent p-1">
+                        <i class="fas fa-camera"></i>
+                </label>
+
+                <form id="form-mudar-topo" action="mudarTopo" method="post" enctype="multipart/form-data" class="position-absolute top-0 start-0">
+                    <input type="file" name="imagem" id="imagem" class="d-none" onchange="document.getElementById('form-mudar-topo').submit();">
+                </form>
+
+                </div>
+                </div>
+
+            <!-- Informações Perfil -->
+            <div class="perfilPainel">
+                
+                <div class="row mt-2 mb-2">
+                    <div class="col mb-2">
+                        <!-- Nome + Botão para trocar de nome -->
+                        <span class="perfilPainelNome"><?php echo $this->view->nome; ?> 
+                        <button type="button" class="btn btn-change-name" data-toggle="modal" data-target="#modal_atualizar_<?php echo $this->view->id;?>"><small><i class="fas fa-pen"></i></small></button>
+                        </span>
+
+                        <!-- Erro nome já existente -->
+                        <?php if(isset($this->view->erroUsernameExistente) && $this->view->erroUsernameExistente) { ?>                                                                                       
+                        <br>
+                        <div class="text-danger">
+                            O nome <?php echo $this->view->username; ?> já está em uso.
+                        </div>
+                        <?php } ?>
+
+                        <!-- Modal Trocar de Nome -->                                            
+                        <div class="modal fade" id="modal_atualizar_<?php echo $this->view->id;?>" tabindex="-1" role="dialog" aria-labelledby="modal_atualizar_<?php echo $this->view->id;?>_title" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal_atualizar_<?php echo $this->view->id;?>_title">Deseja Atualizar seu nome?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                                                                                                
+                                    <form action="atualizar_nome" method="POST">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o novo nome" required>
+                                            </div>
+                                            <div class="form-group text-right">
+                                                <button type="submit" class="btn btn-primary">Salvar</button>
+                                            </div>
+                                    </form>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+
+                    <div class="col-3">
+                        <span class="perfilPainelItem">Tweets</span><br />
+                        <span class="perfilPainelItemValor"><?php echo $this->view->totalTweets?></span>
+                    </div>
+
+                    <div class="col-4">
+                        <span class="perfilPainelItem">Seguindo</span><br />
+                        <span class="perfilPainelItemValor"><?php echo $this->view->totalSeguindo?></span>
+                    </div>
+
+                    <div class="col-4">
+                        <span class="perfilPainelItem">Seguidores</span><br />
+                        <span class="perfilPainelItemValor"><?php echo $this->view->totalSeguidores?></span>
+                    </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>     
+
+
+    <!-- Tweets -->
+
+    <div class="row">
+        <div class="col-12">
+            <?php foreach($this->view->tweets as $id_tweet => $tweet) { ?>
+                <div class="tweet mt-3 mb-3">
+                    <div class="col">
+                        <p>
+                            <!-- Nome  -->
+                            <strong class="text-white"><?php echo $tweet["nome"]; ?></strong>
+                            <!-- Data -->
+                            <span class="text text-muted">
+                                <small><?php echo $tweet["data"]; ?></small>
+                            </span>
+                        </p>
+                        <!-- Conteudo do Hover -->
+                        <p class="text-white">
+                            <?php echo $tweet["tweet"];?>
+                        </p>
+                        <div>
+							<!-- Imagem -->
+							<?php if (isset($tweet["imagem_tweet"])) { ?>
+								<img src="<?php echo $tweet["imagem_tweet"]; ?>" class="img-fluid" />
+							<?php } ?>
+						</div>
+
+                        <br/>
+                        <!-- Botão de Remover -->
+                        <form>
+                            <?php if($tweet["id_usuario"] == $this->view->id){?>
+                                <div class="col d-flex justify-content-end">
+                                    
+                                
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_<?php echo $tweet["id"]?>">
+                                    <small><i class="fas fa-trash"></i></small>
+                                </button>
+
+
+
+                                </div>
+                            <?php } ?>
+                        </form>
+
+                        <!-- Modal para remoção -->
+                        <div class="modal fade" id="modal_<?php echo $tweet["id"]?>" tabindex="-1" role="dialog" aria-labelledby="modal_<?php echo $tweet["id"]?>_title" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal_<?php echo $tweet["id"]?>_title">Confirmar Remoção</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Tem certeza que deseja excluir este Hover?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <a href="removertweet?id_tweet=<?php echo $tweet["id"]?>" class="btn btn-danger">Sim, Remover</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+
+    <!-- Navegação -->
+
+    <div class="row mt-5 justify-content-center">
+        <nav aria-label="Page Navigation">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="?pagina=1">Primeira</a></li>
+                <?php for ($i=1; $i <= $this->view->totalPaginas; $i++) {  ?>
+                    <li class="page-item <?php if($this->view->paginaAtual == $i){ echo "active";}?>">
+                        <a class="page-link" href="?pagina=<?php echo $i?>"><?php echo $i?></a>
+                    </li>
+                <?php } ?>
+                <li class="page-item"><a class="page-link" href="?pagina=<?php echo $this->view->totalPaginas;?>">Ultima</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.confirmDelete').forEach(button => {
+        button.addEventListener('click', function() {
+            const tweetId = this.getAttribute('data-tweet-id');
+            window.location.href = `removertweet?id_tweet=${tweetId}`;
+        });
+    });
+</script>

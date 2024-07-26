@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-sm menu">
+    <div class="container">
+        <a class="navbar-brand" href="timeline">
+            <img src="img/HoverIt4.png" alt="Logo" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-target" aria-controls="nav-target" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <div></div>
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav-target">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link menuItem" href="timeline"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menuItem" href="sair"><i class="fa fa-sign-out-alt"></i> Sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 pt-5">
+    <div class="row pt-2">
+        
+		<!-- Perfil -->
+        <div class="col-lg-3 ">
+
+			<div class="perfil black-gray-col">
+				
+				<!-- Topo do Perfil -->
+				<?php if ($this->view->imagemTopo) { ?>
+                    <div class="perfilTopo" style="background-image: url(<?php echo $this->view->imagemTopo; ?>);"></div>
+                <?php } else { ?>
+                    <div class="perfilTopo" style="background-color: #FFF;"></div>
+                <?php } ?>
+
+				<div class="perfilPainel">
+					
+					<div class="row mt-2 mb-2">
+						<div class="col mb-2">
+							<span class="perfilPainelNome"><?php echo $this->view->nome; ?></span>
+						</div>
+					</div>
+
+					<div class="row mb-2">
+
+						<div class="col-3">
+							<span class="perfilPainelItem">Tweets</span><br />
+							<span class="perfilPainelItemValor"><?php echo $this->view->totalTweets?></span>
+						</div>
+
+						<div class="col-4">
+							<span class="perfilPainelItem">Seguindo</span><br />
+							<span class="perfilPainelItemValor"><?php echo $this->view->totalSeguindo?></span>
+						</div>
+
+						<div class="col-4">
+							<span class="perfilPainelItem">Seguidores</span><br />
+							<span class="perfilPainelItemValor"><?php echo $this->view->totalSeguidores?></span>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+        <div class="col-lg-9">
+            
+            <div class="row mb-2">
+                <div class="col HoverBox">
+                    <form method="get" action="quemseguir">
+                        <div class="input-group mb-3">
+                            <input type="text" name="pesquisa" class="form-control" placeholder="Quem você está procurando?" required>
+                            <button class="btn-search input-group-text" type="submit" id="whoissearch">
+								<i class="fa fa-search"></i> 
+							</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <?php foreach($this->view->retorno as $usuario) { ?>
+            <div class="row mb-2 quem-seguir-item itemSeguirBox">
+                    <div class="col-md-6 text-white">
+                        <?php echo $usuario["nome"]; ?>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end">
+                        <div>
+                            <?php if($usuario["seguindo_sn"] == 0) { ?>
+                                <a href="acao?acao=seguir&id_seguindo=<?php echo $usuario["id"]?>" class="btn btn-green">Seguir</a>
+                            <?php }else if($usuario["seguindo_sn"] == 1) {?>
+                                <a href="acao?acao=deixar_seguir&id_seguindo=<?php echo $usuario["id"]?>" class="btn btn-danger">Deixar de seguir</a>
+                            <?php } ?>
+                        </div>
+                    </div>                     
+                </div>
+                <?php } ?>
+            </div>
+
+        </div>
+    </div>
+</div>

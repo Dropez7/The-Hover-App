@@ -1,0 +1,179 @@
+<nav class="navbar navbar-expand-sm menu">
+    <div class="container">
+        <a class="navbar-brand" href="timeline">
+            <img src="img/HoverIt4.png" alt="Logo" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-target" aria-controls="nav-target" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <div></div>
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav-target">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link menuItem" href="timeline"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menuItem" href="sair"><i class="fa fa-sign-out-alt"></i> Sair</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container mt-5 pt-5">
+	
+	<div class="row pt-2">
+		
+		<!-- Perfil -->
+
+		<div class="col-lg-3 ">
+
+			<div class="perfil black-gray-col">
+				
+				
+				<!-- Topo do Perfil -->
+				<?php if ($this->view->imagemTopo) { ?>
+                    <div class="perfilTopo" style="background-image: url(<?php echo $this->view->imagemTopo; ?>);"></div>
+                <?php } else { ?>
+                    <div class="perfilTopo" style="background-color: #FFF;"></div>
+                <?php } ?>
+				
+				<!-- Corpo do Perfil -->
+				<div class="perfilPainel">
+					
+					<div class="row mt-2 mb-2">
+						<div class="col mb-2 d-flex align-items-center">
+							<span class="perfilPainelNome"><?php echo $this->view->nome; ?></span>
+							<a href="perfilPrincipal" class="btn-perfil-acess">
+								<i class="fa fa-user"></i> <!-- Ícone de perfil -->
+							</a>
+						</div>
+					</div>
+
+					<div class="row mb-2">
+
+						<div class="col-3">
+							<span class="perfilPainelItem">Tweets</span><br />
+							<span class="perfilPainelItemValor"><?php echo $this->view->totalTweets?></span>
+						</div>
+
+						<div class="col-4">
+							<span class="perfilPainelItem">Seguindo</span><br />
+							<span class="perfilPainelItemValor"><?php echo $this->view->totalSeguindo?></span>
+						</div>
+
+						<div class="col-4">
+							<span class="perfilPainelItem">Seguidores</span><br />
+							<span class="perfilPainelItemValor"><?php echo $this->view->totalSeguidores?></span>
+						</div>
+
+					</div>
+
+				<div>
+
+				</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Tweets -->
+
+		<div class="col-lg-6">
+
+			<!-- Pesquisa de Tweet -->
+			<div class="row mb-3">
+				<div class="col searchBox">
+					<form method="POST" action="pesquisaHovers">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Pesquisar..." name="search" required>
+						<div class="input-group-append">
+							<button class="btn-search input-group-text" type="submit">
+								<i class="fa fa-search"></i> <!-- Ícone de pesquisa, se necessário -->
+							</button>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+
+			<?php 
+
+            foreach($this->view->tweets as $id_tweet => $tweet) { ?>
+				<div class="row tweet mt-3 mb-3">
+					<div class="col">
+						<p>
+							<!-- Nome  -->
+							<strong class="text-white"><?php echo $tweet["nome"]; ?></strong>
+							
+							<!-- Data -->
+							<span class="text text-muted">
+								<small><?php echo $tweet["data"]; ?></small>
+							</span>
+						</p>
+
+						<!-- Conteudo do Hover -->
+						<p class="text-white">
+							<!-- Texto -->
+							<?php echo $tweet["tweet"];?>
+						</p>
+						<div>
+							<!-- Imagem -->
+							<?php if (isset($tweet["imagem_tweet"])) { ?>
+								<img src="<?php echo $tweet["imagem_tweet"]; ?>" class="img-fluid" />
+							<?php } ?>
+						</div>
+
+						<br/>
+					</div>
+				</div>
+			<?php } ?>
+
+			<!-- Navegação -->
+			<div class="row mt-5 justify-content-center">
+				
+				<nav aria-label="Page Navigation">
+					
+					<ul class="pagination">
+						<li class="page-item"><a class="page-link" href="?pagina=1">Primeira</a></li>
+						
+						<?php for ($i=1; $i <= $this->view->totalPaginas; $i++) {  ?>
+							<li class="page-item <?php if($this->view->paginaAtual == $i){ echo "active";}?>"><a class="page-link" href="?pagina=<?php echo $i?>"><?php echo $i?></a></li>
+						<?php } ?>
+
+						<li class="page-item"><a class="page-link" href="?pagina=<?php echo $this->view->totalPaginas;?>">Ultima</a></li>
+					</ul>
+				</nav>
+				
+			</div>			
+		</div>
+
+		<!-- Quem seguir -->
+		<div class="col-lg-3">
+			<div class="quemSeguir">
+				<span class="quemSeguirTitulo mb-5">Quem seguir</span><br/>
+				<div class="quemSeguirLista">
+				<?php foreach($this->view->recomendacao as $usuario) { ?>
+				<div class="row quem-seguir-item">
+					<div class="col-md-10 text-white">
+						<?php echo $usuario["nome"]; ?>
+					</div>
+					<div class="col-md-2 d-flex align-items-center justify-content-end">
+						<a href="acao?acao=seguir&id_seguindo=<?php echo $usuario["id"]?>" class="btn btn-follow">
+							<i class="fa fa-plus"></i> <!-- Adicionando um ícone de "+" -->
+						</a>
+					</div>
+				</div>
+				
+				<?php } ?>
+				</div>
+
+				<hr />
+				<a href="quemseguir" class="quemSeguirTxt">Procurar por mais pessoas conhecidas</a>
+			</div>
+		</div>
+
+	</div>
+</div>
